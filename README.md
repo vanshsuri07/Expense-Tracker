@@ -14,7 +14,7 @@ A clean, responsive personal expense tracker built with **React + Vite** — fea
 
 ## 📸 Preview
 
-| Desktop (1600px) | Mobile (414px) |
+| Desktop (1600px) | Mobile (412px) |
 | ---------------- | -------------- |
 
 <p align="center">
@@ -75,7 +75,7 @@ Each component has a corresponding **CSS Module** for scoped, conflict-free styl
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/expense-tracker.git
+git clone https://github.com/vanshsuri07/expense-tracker.git
 
 # 2. Navigate into the project
 cd expense-tracker
