@@ -1,13 +1,33 @@
 import { useState, useEffect } from "react";
 import styles from "./CurrencyConverter.module.css";
 
-const CURRENCIES = ["EUR", "GBP", "INR", "JPY", "AUD", "CAD", "AED", "SGD"];
+const FALLBACK_CURRENCIES = [
+  "EUR",
+  "GBP",
+  "INR",
+  "JPY",
+  "AUD",
+  "CAD",
+  "AED",
+  "SGD",
+];
 
 export default function CurrencyConverter({ totalUSD }) {
   const [targetCurrency, setTargetCurrency] = useState("INR");
   const [rate, setRate] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [lastUpdated, setLastUpdated] = useState(null);
+  const [currencies, setCurrencies] = useState(FALLBACK_CURRENCIES);
+
+  useEffect(() => {
+    fetch("https://api.frankfurter.app/currencies")
+      .then((res) => res.json())
+      .then((data) =>
+        setCurrencies(Object.keys(data).filter((c) => c !== "USD")),
+      )
+      .catch(() => setCurrencies(FALLBACK_CURRENCIES));
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -22,6 +42,7 @@ export default function CurrencyConverter({ totalUSD }) {
         const data = await res.json();
         if (!cancelled) {
           setRate(data.rates[targetCurrency]);
+          setLastUpdated(new Date().toLocaleTimeString());
         }
       } catch (err) {
         if (!cancelled) {
@@ -71,7 +92,7 @@ export default function CurrencyConverter({ totalUSD }) {
           value={targetCurrency}
           onChange={(e) => setTargetCurrency(e.target.value)}
         >
-          {CURRENCIES.map((c) => (
+          {currencies.map((c) => (
             <option key={c} value={c}>
               {c}
             </option>
@@ -93,7 +114,7 @@ export default function CurrencyConverter({ totalUSD }) {
 
       {!error && rate && (
         <p className={styles.rateNote}>
-          1 USD = {rate} {targetCurrency}
+          1 USD = {rate} {targetCurrency} · Updated {lastUpdated}
         </p>
       )}
     </div>
