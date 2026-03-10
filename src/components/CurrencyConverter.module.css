@@ -1,0 +1,123 @@
+.card {
+  background: var(--black);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-lg);
+  color: var(--white);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.fromRow {
+  background: rgba(255,255,255,0.07);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.fromLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: rgba(255,255,255,0.5);
+}
+
+.fromAmount {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--white);
+}
+
+.arrow {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--green);
+  line-height: 1;
+  margin: 2px 0;
+}
+
+.toRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.select {
+  background: var(--green);
+  color: var(--black);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  appearance: none;
+}
+
+.result {
+  flex: 1;
+  text-align: right;
+}
+
+.loading {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+  font-style: italic;
+}
+
+.convertedAmount {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.errorText {
+  font-size: 1.2rem;
+  color: var(--red);
+  font-weight: 700;
+}
+
+.errorMsg {
+  font-size: 0.78rem;
+  color: #ff8080;
+  background: rgba(255,69,69,0.12);
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  margin-top: 4px;
+}
+
+.rateNote {
+  font-size: 0.73rem;
+  color: rgba(255,255,255,0.35);
+  margin-top: 4px;
+  text-align: right;
+}
